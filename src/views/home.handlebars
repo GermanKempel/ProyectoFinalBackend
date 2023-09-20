@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>Bienvenido a GKecommerce</h1>
+    <br />
+    <a href="/login">Ingrese su usuario o registrese para poder comprar</a>
+    <br />
+    <h1>Lista de productos</h1>
+    <ul>
+      {{#each products.docs}}
+        <br />
+        <li>Title: {{title}}</li>
+        <li>Description: {{description}}</li>
+        <li>Code: {{code}}</li>
+        <li>Price: {{price}}</li>
+        <li>Status: {{status}}</li>
+        <li>Stock: {{stock}}</li>
+        <li>Category: {{category}}</li>
+        <li>Id: {{id}}</li>
+        <br />
+      {{/each}}
+    </ul>
+  </body>
+</html>
