@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
-import config from "../../config/config.js";
 
-const URL = config.mongoURL;
+const URL = process.env.MONGO_URL;
 
 try {
   await mongoose.connect(URL);

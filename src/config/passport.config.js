@@ -34,14 +34,12 @@ const initializePassport = () => {
     passReqToCallback: true, //permite acceder al objeto request como cualquier otro middleware,
     usernameField: 'email'
   }, async (req, username, password, done) => {
-
     const { first_name, last_name, age } = req.body;
 
     if (!first_name || !last_name || !age || !username || !password)
       return done(null, false, { message: 'Missing fields' });
 
     const user = await usersManager.getByEmail(username);
-
     if (user) return done(null, false, { message: 'User already exists' });
 
     const hash = createHash(password);
@@ -51,7 +49,6 @@ const initializePassport = () => {
     };
 
     newUser.password = hash;
-
     const createdUser = await usersManager.save(newUser);
 
     return done(null, createdUser);
@@ -67,7 +64,6 @@ const initializePassport = () => {
       if (!user) {
         return done(null, false, { message: 'Invalid credentials' });
       }
-
       if (!isValidPassword(user, password)) return done(null, false, { message: 'Invalid credentials' });
 
       return done(null, user);

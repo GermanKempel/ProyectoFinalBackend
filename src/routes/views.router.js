@@ -7,21 +7,13 @@ const router = Router();
 
 
 router.get('/realtimeproducts', renderRealtimeProducts);
-
 router.get('/products', passportCall('jwt'), renderProducts);
-
 router.get('/products/:pid', renderProductById);
-
 router.get('/carts/:cid', renderCartPage);
-
 router.get('/register', renderRegisterPage);
-
 router.get('/login', renderLoginPage);
-
 router.get('/', renderHomePage);
-
 router.get('/reset-pass', renderResetPasswordPage);
-
 router.get('/users', renderUsersPage, authorization('admin'))
 
 export default router;

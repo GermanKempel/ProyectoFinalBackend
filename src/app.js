@@ -13,7 +13,6 @@ import initializePassport from './config/passport.config.js';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import './dao/dbManagers/dbConfig.js'
-import config from './config/config.js';
 import { addLogger } from "./utils/loggers.js";
 import errorHandler from "./middlewares/errors/index.js";
 import swaggerJsDoc from 'swagger-jsdoc';
@@ -82,7 +81,7 @@ app.get('/loggerTest', (req, res) => {
   req.logger.debug('Prueba Debug');
 });
 
-const PORT = config.port;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () =>
   console.log("Server listening on port" + PORT));
