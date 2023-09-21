@@ -12,7 +12,7 @@ const loginUser = async (email, password) => {
     const user = await usersRepository.getByEmail(email);
 
     if (!user || !password) {
-      throw new Error('Invalid credentials');
+      logger.info('User not found');
     }
 
     const token = generateToken(user);
@@ -37,7 +37,7 @@ const loginUser = async (email, password) => {
     return { token, cart: user.cart, user: lastUser };
 
   } catch (error) {
-    throw error;
+    logger.info('Error trying to login', error);
   }
 };
 

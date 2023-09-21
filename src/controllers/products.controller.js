@@ -71,7 +71,7 @@ const getPaginatedProducts = async (req, res) => {
     const products = await productsService.getPaginatedProducts(page, limit);
     res.send({ status: 'Products retrieved successfully', products });
   } catch (error) {
-    console.error('Error trying to get paginated products', error);
+    logger.info('Error trying to get paginated products', error);
     res.status(500).send('Internal Server Error');
   }
 }
@@ -81,7 +81,7 @@ const getMockingProducts = (req, res) => {
     const products = generateRandomProducts();
     res.send({ status: 'success', products });
   } catch (error) {
-    console.error(error);
+    logger.info('Error trying to get mocking products', error);
     res.status(500).send('Internal Server Error');
   }
 };

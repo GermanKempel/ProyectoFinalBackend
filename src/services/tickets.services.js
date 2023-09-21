@@ -20,10 +20,10 @@ const getByUserId = async (userId) => {
 const addProduct = async (ticketId, productId) => {
   const result = await ticketsRepository.addProduct(ticketId, productId);
   if (!ticketId) {
-    throw new Error("Ticket not found");
+    logger.info('Ticket not found');
   }
   if (!productId) {
-    throw new Error("Product not found");
+    logger.info('Product not found');
   }
   return result;
 }
@@ -31,10 +31,10 @@ const addProduct = async (ticketId, productId) => {
 const removeProduct = async (ticketId, productId) => {
   const result = await ticketsRepository.removeProduct(ticketId, productId);
   if (!ticketId) {
-    throw new Error("Ticket not found");
+    logger.info('Ticket not found');
   }
   if (!productId) {
-    throw new Error("Product not found");
+    logger.info('Product not found');
   }
   return result;
 }
@@ -42,10 +42,10 @@ const removeProduct = async (ticketId, productId) => {
 const updateTicket = async (ticketId) => {
   const result = await ticketsRepository.updateTicket(ticketId, productId);
   if (!ticketId) {
-    throw new Error("Ticket not found");
+    logger.info('Ticket not found');
   }
   if (!productId) {
-    throw new Error("Product not found");
+    logger.info('Product not found');
   }
   return result;
 }
@@ -53,7 +53,7 @@ const updateTicket = async (ticketId) => {
 const saveTicket = async (ticket) => {
   const result = await ticketsRepository.saveTicket(ticket);
   if (!result) {
-    throw new Error("Ticket not saved");
+    logger.info('Ticket not found');
   }
   return result;
 }
@@ -61,7 +61,7 @@ const saveTicket = async (ticket) => {
 const deleteTicket = async (ticketId) => {
   const result = await ticketsRepository.deleteTicket(ticketId);
   if (!ticketId) {
-    throw new Error("Ticket not found");
+    logger.info('Ticket not found');
   }
   return result;
 }
