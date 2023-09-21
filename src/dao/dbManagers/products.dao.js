@@ -1,4 +1,3 @@
-import { parse } from 'dotenv';
 import productsModel from './models/products.model.js';
 export default class ProductsDao {
     constructor() {

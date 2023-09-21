@@ -1,17 +1,17 @@
-import config from "../config/config.js";
+// import config from "../config/config.js";
 
 let Products;
 let Carts;
 let Users;
 let Tickets;
 
-const persistence = config.persistence;
+const persistence = process.env.PERSISTENCE;
 
 switch (persistence) {
   case "MONGO":
     console.log("Working with mongo");
     const mongoose = await import('mongoose');
-    await mongoose.connect(config.mongoURL)
+    await mongoose.connect(process.env.MONGO_URL)
     const { default: mongoProductsDao } = await import('./dbManagers/products.dao.js');
     const { default: mongoCartsDao } = await import('./dbManagers/carts.dao.js');
     const { default: mongoUsersDao } = await import('./dbManagers/users.dao.js');

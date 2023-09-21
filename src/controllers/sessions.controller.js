@@ -2,11 +2,11 @@ import * as usersService from "../services/users.service.js";
 import * as cartsService from "../services/carts.services.js";
 import logger from '../utils/loggers.js';
 import jwt from 'jsonwebtoken';
-import config from '../config/config.js';
+// import config from '../config/config.js';
 import { resetPasswordNotification } from '../utils/custom-html.js';
 import { sendMail } from '../services/mail.services.js';
 
-const PRIVATE_KEY = config.private_key;
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 const login = async (req, res) => {
   try {

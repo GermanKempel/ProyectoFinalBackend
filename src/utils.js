@@ -3,13 +3,13 @@ import { fileURLToPath } from 'url'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
-import config from '../src/config/config.js'
+// import config from '../src/config/config.js'
 import { faker } from '@faker-js/faker'
 import nodemailer from 'nodemailer'
 
-
-const userMail = config.userNodeMailer;
-const passMail = config.passNodeMailer;
+// process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+const userMail = process.env.USER_NODE_MAILER;
+const passMail = process.env.PASS_NODE_MAILER;
 
 export const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -37,7 +37,7 @@ export const generateRandomProducts = () => {
   return products;
 }
 
-const private_key = config.private_key;
+const private_key = process.env.PRIVATE_KEY;
 
 export const generateToken = (user) => {
   const token = jwt.sign({ user }, private_key, { expiresIn: '24h' });

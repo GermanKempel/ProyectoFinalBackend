@@ -4,7 +4,7 @@ import { createHash, isValidPassword } from '../utils.js';
 import GitHubStrategy from 'passport-github2';
 import jwt from 'passport-jwt';
 import Users from '../dao/dbManagers/users.dao.js';
-import config from './config.js'
+// import config from './config.js'
 
 const usersManager = new Users();
 
@@ -13,9 +13,9 @@ const ExtractJWT = jwt.ExtractJwt;
 
 const LocalStrategy = local.Strategy;
 
-const private_key = config.private_key;
-const Github_clientID = config.Github_clientID;
-const Github_clientSecret = config.Github_clientSecret;
+const private_key = process.env.PRIVATE_KEY;
+const Github_clientID = process.env.GITHUB_CLIENT_ID;
+const Github_clientSecret = process.env.GITHUB_CLIENT_SECRET;
 
 const initializePassport = () => {
 
